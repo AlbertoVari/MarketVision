@@ -7,7 +7,7 @@ ie = IECore()
 
 # Load the model
 net = ie.read_network(model="face-detection-adas-0001.xml", weights="face-detection-adas-0001.bin")
-exec_net = ie.load_network(network=net, device_name="CPU")
+exec_net = ie.load_network(network=net, device_name="MYRIAD")
 
 # Get input/output names
 input_blob = next(iter(net.inputs))
