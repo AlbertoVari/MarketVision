@@ -84,16 +84,17 @@ def update_leds(current, previous):
     if previous is None:
         print(f"ℹ️ First reading: {current}%")
         return
+ 
+    if current == previous:
+        print("⏸️ No Change → Yellow LED")
+        led_yellow.on(); led_green.off(); led_red.off()
+    elif (current > previous and current >= 0) or (current > previous and current < 0 and previous < 0):
+        print("📈 Improved → Green LED")
+        led_green.on(); led_red.off(); led_yellow.off()
+    else:
+        print("📉 Worsened → Red LED")
+        led_red.on(); led_green.off(); led_yellow.off()
 
-    if current > previous:
-        print("🔼 Increased → Green LED")
-        led_green.on(); led_red.off(); led_yellow.off()
-    elif current < previous:
-        print("🔽 Decreased → Red LED")
-        led_red.on(); led_green.off(); led_yellow.off()
-    else:
-        print("⏸️ No Change → Yellow LED")
-        led_yellow.on(); led_green.off(); led_red.off()
 
 try:
     while True:
