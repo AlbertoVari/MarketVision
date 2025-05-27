@@ -19,3 +19,22 @@ DL Inference ->  OpenVINO 2020.3 (MYRIAD device)
 
 OpenVINO documentation 2020.3 : https://docs.openvino.ai/archives/index.html
 Model : text-detection-0004
+
+Raspberry Pi components :
+Inference Engine Runtime -> Core di OpenVINO (per CPU e MYRIAD)
+USB driver MYRIAD _Z includd in package inference_engine_armv7l
+
+| Step      | What to Do                                        |
+| --------- | ------------------------------------------------- |
+| ✅ Install | Use Intel's OpenVINO 2020.3.194 installer         |
+| ✅ Python  | Use Python 3.6                                    |
+| ✅ Env     | Always run `setupvars.bat` before using OpenVINO  |
+| ✅ No pip  | Don’t use `pip install openvino` for this version |
+
+Test the Python API
+After environment setup, try this in Python:
+
+from openvino.inference_engine import IECore
+
+ie = IECore()
+print(ie.available_devices)
